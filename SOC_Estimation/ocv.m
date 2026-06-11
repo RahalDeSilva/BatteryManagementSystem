@@ -20,18 +20,23 @@ function [V_ocv, dOCV_dSOC] = ocv(soc)
 
     % ----------------------------------------------------------------
     % OCV lookup table (SOC vs Voltage)
-    % Source: typical 18650 Li-ion cell — replace with your own data.
     %
-    % Procedure to generate from NASA 00001.csv:
+    % Range extended to cover the measured voltage span of the
+    % NASA 00001.csv dataset: V_measured in [2.471, 4.247] V.
+    % A small margin is added on both ends (2.40 V and 4.30 V) so the
+    % EKF never sits exactly at the table boundary during normal noise.
+    %
+    % NOTE: These are still generic 18650 values. For best accuracy,
+    % replace with values extracted from your own characterisation:
     %   1. Extract a very-low-current (quasi-static) discharge segment
     %   2. Plot V_measured vs cumulative Ah / rated Ah
     %   3. Read off (SOC, V) pairs at 5-10% SOC intervals
     % ----------------------------------------------------------------
-    soc_lut = [0.00, 0.05, 0.10, 0.20, 0.30, 0.40, 0.50, ...
-               0.60, 0.70, 0.80, 0.90, 0.95, 1.00];
+    soc_lut = [0.00, 0.02, 0.05, 0.10, 0.20, 0.30, 0.40, 0.50, ...
+               0.60, 0.70, 0.80, 0.90, 0.95, 0.98, 1.00];
 
-    ocv_lut = [3.00, 3.13, 3.30, 3.50, 3.62, 3.71, 3.79, ...
-               3.84, 3.88, 3.93, 4.00, 4.06, 4.20];
+    ocv_lut = [2.40, 2.55, 2.80, 3.05, 3.40, 3.58, 3.69, 3.78, ...
+               3.84, 3.89, 3.95, 4.03, 4.10, 4.20, 4.30];
 
     % ----------------------------------------------------------------
     % Clamp SOC to valid range to avoid extrapolation

@@ -19,7 +19,12 @@ clear; clc; close all;
 %% -----------------------------------------------------------------------
 %  1. LOAD DATA
 % -----------------------------------------------------------------------
-data = load_data('00001.csv');   % Returns struct: V, I, T, t, dt, N
+data = load_data('data\00001.csv');   % Returns struct: V, I, T, t, dt, N
+
+% NASA convention: negative I = discharge.
+% Our model assumes positive I = discharge (SOC = SOC - I*dt/Q).
+% Flip the sign to match the model convention.
+data.I = -data.I;
 
 %% -----------------------------------------------------------------------
 %  2. BATTERY PARAMETERS
@@ -92,6 +97,8 @@ for k = 1:data.N
 
 end
 
+
+
 fprintf('EKF complete.\n');
 
 %% -----------------------------------------------------------------------
@@ -140,3 +147,29 @@ fprintf('Final EKF SOC      : %.2f %%\n', SOC_ekf(end) * 100);
 fprintf('Final CC SOC       : %.2f %%\n', SOC_cc(end)  * 100);
 fprintf('Voltage RMSE       : %.4f V\n',  sqrt(mean(residual.^2)));
 fprintf('Max |Residual|     : %.4f V\n',  max(abs(residual)));
+
+[max_res, idx] = max(abs(residual));
+fprintf('Max residual %.4f V occurs at sample %d (t = %.1f s, SOC_ekf = %.2f%%)\n', ...
+    max_res, idx, t(idx), SOC_ekf(idx)*100);
+
+% Quick empirical check — does voltage near end-of-discharge
+% match your table's shape?
+low_soc_idx = SOC_ekf < 0.10;
+figure;
+scatter(SOC_ekf(low_soc_idx)*100, data.V(low_soc_idx));
+xlabel('EKF SOC [%]'); ylabel('Measured V [V]');
+title('Low-SOC region: measured voltage vs EKF SOC estimate');
+grid on;
+
+figure;
+subplot(2,1,1);
+plot(t, data.V);
+xlabel('Time [s]'); ylabel('Measured V [V]');
+title('Voltage vs Time — look for a sudden jump back up');
+grid on;
+
+subplot(2,1,2);
+plot(t, SOC_ekf*100);
+xlabel('Time [s]'); ylabel('EKF SOC [%]');
+title('EKF SOC vs Time');
+grid on;
