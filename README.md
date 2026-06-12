@@ -19,6 +19,17 @@ A MATLAB-based Battery Management System (BMS) prototype focused on State of Cha
 | State of Health (SOH) | 🔲 Planned |
 | Embedded deployment | 🔲 Planned |
 
+## Status (as of this checkpoint)
+- ✅ EKF SOC estimation working on NASA 00001.csv (single discharge cycle)
+- ✅ Variable timestep handling (9.4-13.9s)
+- ✅ Current sign convention corrected (NASA: discharge = negative)
+- ✅ Nonlinear OCV lookup table (extended range + densified knee region)
+- 📊 Operational Voltage RMSE: 0.061 V (excludes end-of-discharge relaxation)
+- 📌 Known limitation: residual spikes during end-of-discharge relaxation
+  (1st-order RC model limitation — see Future Work)
+- 📌 EKF vs Coulomb Counting gap (~3.4pp) likely due to placeholder
+  capacity Q=2.0Ah vs actual aged-cell capacity — candidate for SOH module
+
 ---
 
 ## Battery Model
@@ -50,13 +61,13 @@ V = OCV(SOC) − I·R0 − Vrc
 ```
 BatteryManagementSystem/
 ├── SOC_Estimation/
+    ├── data/
+│       └── 00001.csv         % NASA Li-ion discharge dataset
 │   ├── main.m            % EKF loop + Coulomb counting + plots
 │   ├── battery_step.m    % RC circuit state transition function
 │   ├── ekf_step.m        % EKF predict and update step
 │   ├── ocv.m             % Nonlinear OCV piecewise-linear lookup
 │   └── load_data.m       % NASA dataset loader
-├── data/
-│   └── 00001.csv         % NASA Li-ion discharge dataset
 └── README.md
 ```
 

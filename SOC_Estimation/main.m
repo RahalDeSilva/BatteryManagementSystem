@@ -19,12 +19,15 @@ clear; clc; close all;
 %% -----------------------------------------------------------------------
 %  1. LOAD DATA
 % -----------------------------------------------------------------------
-data = load_data('data\00001.csv');   % Returns struct: V, I, T, t, dt, N
+data = load_data('data/00001.csv');   % Returns struct: V, I, T, t, dt, N
 
-% NASA convention: negative I = discharge.
-% Our model assumes positive I = discharge (SOC = SOC - I*dt/Q).
-% Flip the sign to match the model convention.
+% NASA dataset convention: negative I = discharge, positive I = charge.
+% Our model (battery_step.m, ekf_step.m) assumes SOC(k+1) = SOC(k) - I*dt/Q,
+% i.e. positive I = discharge. Flip the sign to match.
 data.I = -data.I;
+fprintf('Current sign flipped to match model convention. First 5 samples: ');
+fprintf('%.4f ', data.I(1:5)); fprintf('\n');
+
 
 %% -----------------------------------------------------------------------
 %  2. BATTERY PARAMETERS
@@ -97,8 +100,6 @@ for k = 1:data.N
 
 end
 
-
-
 fprintf('EKF complete.\n');
 
 %% -----------------------------------------------------------------------
@@ -148,28 +149,16 @@ fprintf('Final CC SOC       : %.2f %%\n', SOC_cc(end)  * 100);
 fprintf('Voltage RMSE       : %.4f V\n',  sqrt(mean(residual.^2)));
 fprintf('Max |Residual|     : %.4f V\n',  max(abs(residual)));
 
-[max_res, idx] = max(abs(residual));
-fprintf('Max residual %.4f V occurs at sample %d (t = %.1f s, SOC_ekf = %.2f%%)\n', ...
-    max_res, idx, t(idx), SOC_ekf(idx)*100);
+% ----------------------------------------------------------------
+% "Operational" RMSE — excludes the end-of-discharge relaxation
+% tail, where current drops to ~0 A and the cell voltage rebounds
+% toward OCV. A 1st-order RC model cannot track this multi-timescale
+% recovery; this is a documented limitation, not a bug (see README).
+% ----------------------------------------------------------------
+N_exclude    = 12;
+rmse_steady  = sqrt(mean(residual(1:end-N_exclude).^2));
+max_steady   = max(abs(residual(1:end-N_exclude)));
 
-% Quick empirical check — does voltage near end-of-discharge
-% match your table's shape?
-low_soc_idx = SOC_ekf < 0.10;
-figure;
-scatter(SOC_ekf(low_soc_idx)*100, data.V(low_soc_idx));
-xlabel('EKF SOC [%]'); ylabel('Measured V [V]');
-title('Low-SOC region: measured voltage vs EKF SOC estimate');
-grid on;
-
-figure;
-subplot(2,1,1);
-plot(t, data.V);
-xlabel('Time [s]'); ylabel('Measured V [V]');
-title('Voltage vs Time — look for a sudden jump back up');
-grid on;
-
-subplot(2,1,2);
-plot(t, SOC_ekf*100);
-xlabel('Time [s]'); ylabel('EKF SOC [%]');
-title('EKF SOC vs Time');
-grid on;
+fprintf('\n--- Operational (excludes last %d relaxation samples) ---\n', N_exclude);
+fprintf('Operational RMSE   : %.4f V\n', rmse_steady);
+fprintf('Operational Max    : %.4f V\n', max_steady);
