@@ -1,0 +1,3 @@
+../Src/ekf.c:11:7:OCV_from_SOC	16	static
+../Src/ekf.c:19:6:EKF_Init	16	static
+../Src/ekf.c:49:6:EKF_Update	104	static
