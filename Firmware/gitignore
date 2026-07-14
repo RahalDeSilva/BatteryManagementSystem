@@ -1,0 +1,16 @@
+# STM32CubeIDE build artifacts
+Debug/
+Release/
+*.elf
+*.map
+*.list
+*.o
+*.d
+*.su
+
+# PC test binary
+*.exe
+
+# STM32CubeIDE auto-generated build files
+Debug/makefile
+Debug/objects.list
