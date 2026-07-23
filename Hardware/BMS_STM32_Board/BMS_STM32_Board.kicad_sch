@@ -3369,7 +3369,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Transistor_FET:Q_PMOS_GSD"
+		(symbol "Transistor_FET:Q_PMOS_GDS"
 			(pin_names
 				(offset 0)
 				(hide yes)
@@ -3390,7 +3390,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "Q_PMOS_GSD"
+			(property "Value" "Q_PMOS_GDS"
 				(at 5.08 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3423,7 +3423,7 @@
 					)
 				)
 			)
-			(property "Description" "P-MOSFET transistor, gate/source/drain"
+			(property "Description" "P-MOSFET transistor, gate/drain/source"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -3445,7 +3445,7 @@
 					)
 				)
 			)
-			(symbol "Q_PMOS_GSD_0_1"
+			(symbol "Q_PMOS_GDS_0_1"
 				(polyline
 					(pts
 						(xy 0.254 1.905) (xy 0.254 -1.905)
@@ -3612,7 +3612,7 @@
 					)
 				)
 			)
-			(symbol "Q_PMOS_GSD_1_1"
+			(symbol "Q_PMOS_GDS_1_1"
 				(pin input line
 					(at -5.08 0 0)
 					(length 2.54)
@@ -3632,9 +3632,9 @@
 					)
 				)
 				(pin passive line
-					(at 2.54 -5.08 90)
+					(at 2.54 5.08 270)
 					(length 2.54)
-					(name "S"
+					(name "D"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3650,9 +3650,9 @@
 					)
 				)
 				(pin passive line
-					(at 2.54 5.08 270)
+					(at 2.54 -5.08 90)
 					(length 2.54)
-					(name "D"
+					(name "S"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5981,7 +5981,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm"
 			(at 107.95 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -6061,7 +6061,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 93.98 84.582 90)
 			(hide yes)
 			(show_name no)
@@ -6218,7 +6218,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
 			(at 58.42 103.378 90)
 			(hide yes)
 			(show_name no)
@@ -6300,7 +6300,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 56.642 152.4 90)
 			(hide yes)
 			(show_name no)
@@ -6382,7 +6382,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 115.062 54.61 90)
 			(hide yes)
 			(show_name no)
@@ -6542,7 +6542,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector:FanPinHeader_1x04_P2.54mm_Vertical"
 			(at 113.03 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -6591,91 +6591,6 @@
 			(project "BMS_STM32_Board"
 				(path "/49c11c37-c968-4efe-b9c6-d4384c4cec3d"
 					(reference "J3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Transistor_FET:Q_PMOS_GSD")
-		(at 73.66 148.59 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "23121e4a-b70f-4690-8f43-6584e84249bf")
-		(property "Reference" "Q1"
-			(at 80.01 147.3199 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Q_PMOS_GSD"
-			(at 80.01 149.8599 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 78.74 146.05 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 73.66 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "P-MOSFET transistor, gate/source/drain"
-			(at 73.66 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "2d1d84a4-d678-4b69-a23b-f10bbe7983ed")
-		)
-		(pin "3"
-			(uuid "f86d356e-b589-4744-90cd-4bd823479a5e")
-		)
-		(pin "1"
-			(uuid "f365897f-cddd-45dd-b379-a2fc012940cc")
-		)
-		(instances
-			(project "BMS_STM32_Board"
-				(path "/49c11c37-c968-4efe-b9c6-d4384c4cec3d"
-					(reference "Q1")
 					(unit 1)
 				)
 			)
@@ -6793,7 +6708,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 106.68 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -6875,7 +6790,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 85.852 91.44 90)
 			(hide yes)
 			(show_name no)
@@ -7270,7 +7185,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 116.84 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -7431,7 +7346,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 129.54 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -7668,7 +7583,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-3-2-5.08_1x02_P5.08mm_Horizontal"
 			(at 81.28 161.29 0)
 			(hide yes)
 			(show_name no)
@@ -7985,7 +7900,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 124.46 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -8143,7 +8058,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 152.4 81.788 90)
 			(hide yes)
 			(show_name no)
@@ -8223,7 +8138,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 99.06 127.762 90)
 			(hide yes)
 			(show_name no)
@@ -8383,7 +8298,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 114.3 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -8543,7 +8458,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 211.582 53.34 90)
 			(hide yes)
 			(show_name no)
@@ -8701,7 +8616,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 64.77 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -8783,7 +8698,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 92.71 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -8943,7 +8858,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 104.902 133.35 90)
 			(hide yes)
 			(show_name no)
@@ -9023,7 +8938,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 85.09 135.89 0)
 			(hide yes)
 			(show_name no)
@@ -9103,7 +9018,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
 			(at 142.24 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -9272,7 +9187,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
 			(at 182.88 152.4 0)
 			(hide yes)
 			(show_name no)
@@ -9363,7 +9278,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 193.04 150.622 90)
 			(hide yes)
 			(show_name no)
@@ -9523,7 +9438,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 131.318 157.48 90)
 			(hide yes)
 			(show_name no)
@@ -9681,7 +9596,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 154.94 124.968 90)
 			(hide yes)
 			(show_name no)
@@ -9763,7 +9678,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_0603_1608Metric"
 			(at 179.832 45.72 90)
 			(hide yes)
 			(show_name no)
@@ -10077,7 +9992,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 120.65 164.592 90)
 			(hide yes)
 			(show_name no)
@@ -10626,7 +10541,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 88.9 75.692 90)
 			(hide yes)
 			(show_name no)
@@ -11177,7 +11092,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 142.24 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -11257,7 +11172,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 152.4 123.952 90)
 			(hide yes)
 			(show_name no)
@@ -11339,7 +11254,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
 			(at 209.55 97.79 0)
 			(hide yes)
 			(show_name no)
@@ -11430,7 +11345,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
 			(at 73.66 134.9248 0)
 			(hide yes)
 			(show_name no)
@@ -11510,7 +11425,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 142.24 154.94 0)
 			(hide yes)
 			(show_name no)
@@ -11590,7 +11505,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
 			(at 139.7 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -11917,7 +11832,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 111.76 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -12375,7 +12290,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
 			(at 147.32 123.19 0)
 			(hide yes)
 			(show_name no)
@@ -12468,7 +12383,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector:FanPinHeader_1x04_P2.54mm_Vertical"
 			(at 142.24 161.29 0)
 			(hide yes)
 			(show_name no)
@@ -12634,7 +12549,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 233.68 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -12794,7 +12709,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 82.55 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -12876,7 +12791,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 			(at 213.36 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -12958,7 +12873,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 154.94 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -13084,6 +12999,91 @@
 		)
 	)
 	(symbol
+		(lib_id "Transistor_FET:Q_PMOS_GDS")
+		(at 73.66 148.59 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f2e13364-0731-42a4-8d85-61fdd8725041")
+		(property "Reference" "Q1"
+			(at 80.01 147.3199 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Q_PMOS_GDS"
+			(at 80.01 149.8599 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:TO-252-3_TabPin2"
+			(at 78.74 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 73.66 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "P-MOSFET transistor, gate/drain/source"
+			(at 73.66 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7af05191-420a-45f1-aa97-5b33cad37a14")
+		)
+		(pin "2"
+			(uuid "714ae2f3-b550-4b28-bed1-e4ccbf939e15")
+		)
+		(pin "3"
+			(uuid "38c16e43-cec9-4cba-81d7-d75678c93b39")
+		)
+		(instances
+			(project "BMS_STM32_Board"
+				(path "/49c11c37-c968-4efe-b9c6-d4384c4cec3d"
+					(reference "Q1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
 		(at 38.1 101.6 0)
 		(mirror y)
@@ -13117,7 +13117,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-3-2-5.08_1x02_P5.08mm_Horizontal"
 			(at 38.1 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -13199,7 +13199,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 111.76 82.55 0)
 			(hide yes)
 			(show_name no)
